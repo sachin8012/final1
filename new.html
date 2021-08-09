@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href=
+  "https://maxcdn.bootstrapcdn.com/bootstrap/
+  4.0.0/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src=
+  "https://ajax.googleapis.com/ajax/libs/
+  jquery/3.3.1/jquery.min.js">
+  </script>
+  <!-- Popper JS -->
+  <script src=
+  "https://cdnjs.cloudflare.com/ajax/libs/
+  popper.js/1.12.9/umd/popper.min.js">
+  </script>
+  <!-- Latest compiled JavaScript -->
+  <script src=
+  "https://maxcdn.bootstrapcdn.com/bootstrap/
+  4.0.0/js/bootstrap.min.js">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+</head>
+
+<body><br>
+  <h1 class="text-center text-success">
+    Welocme to Employee Form
+  </h1>
+
+  <p class="text-center">
+  New Employee Form
+  </p>
+
+  <div class="container">
+    <div class="col-lg-8
+      m-auto d-block">
+    <form>
+    <div>
+        <label for="name">NAME:</label>
+        <input type="text" 
+         maxlength = "55" 
+         id ="fullname" 
+         name="txtName" 
+         class="form-group"  
+         placeholder="Name" 
+        >
+        <h5 id="namecheck" style="color: red;">
+          **Please Enter the name
+        </h5>
+    </div>
+    <div>
+    <label for="birthday">BIRTHDAY:</label>
+    <input type="date" id="birthday" name="birthday" required><br><br>
+    <h5 id="birthcheck" style="color: red;" >
+      **Please enter the birthday
+    </h5><br><br>
+    </div>
+    <div>
+        <label for="email">EMAIL ID:</label>
+        <input type="email" id="email" placeholder="enter your email id" name="email"><br><br>
+        <h5 id="emailcheck" style="color: red;" >
+          **Please enter the email
+        </h5><br><br>
+    </div>
+    <div>
+        <label for="phone">MOBILE NUMBER:</label>
+        <input type="tel" id="phone" name="phone"><br><br>
+        <h5 id="phonecheck" style="color: red;" >
+          **Please enter the phone number
+        </h5><br><br>
+    </div>
+    <div>
+        <label for="experience">TOTAL NO OF EXPERIENCE:</label>
+        <select name="experience" id="experience">
+          <option value="FRESHER">fresher</option>
+          <option value="1-2 YEARS">1-2 YEARS</option>
+          <option value="2-5 YEARS">2-5 YEARS</option>
+          <option value="5-8 YERAS">5-8 YEARS</option>
+          <option value=">8 YEARS">>8 YEARS</option><br><br>
+        </select><br><br>
+    </div>
+    <div>
+      <label for="skill set">SKILL SET:</label><br>
+      <select class="js-example-basic-multiple" id="multipleCheck" name="states[]" multiple="multiple" class="form-group">
+        <option value="chtml">HTML</option>
+        <option value="jquery">JQUERY</option>
+        <option value="java">JAVA</option>
+        <option value="hcss">CSS</option>
+        <option value="bstrap">BOOTSTRAP</option>
+        <option value="pthon">PYTHON</option>
+        <option value="n1">NODE</option>
+      </select>
+      <h5 id="skillcheck" style="color: red;" >
+        **Please enter skill sets
+      </h5><br><br>
+      </div>
+    <div>
+        <label for="qualification">QUALIFICATION:</label><br>
+        <input type="checkbox" id="studies1" name="x" value="x">
+        <label for="x"> x</label><br>
+        <input type="checkbox" id="studies2" name="12" value="12">
+        <label for="12">12</label><br>
+        <input type="checkbox" id="studies3" name="ug" value="ug">
+        <label for="ug">UG</label><br>
+        <input type="checkbox" id="studies4" name="pg" value="pg">
+        <label for="pg"> PG</label><br>
+        <input type="checkbox" id="studies5" name="mphil" value="mphil">
+        <label for="mphil">MPHIL</label><br>
+        <input type="checkbox" id="studies6" name="doctorate" value="doctorate">
+        <label for="doctorate">DOCTORATE</label><br><br>
+    </div>
+    <div>
+        <label for="GENDER">GENDER:</label><br>
+        <input type="radio" id="gender1" name="gender" , value="male">
+        <label for="gender1">male</label><br>
+        <input type="radio" id="gender2" name="gender" value="female">
+        <label for="gender2">female</label><br><br>
+    </div>
+    <div>
+        <label for="RESUME">RESUME:</label><br>
+        <input type="file" id="myFile" name="filename"><br><br>
+    </div>
+    
+    <input type="submit" id="submitbtn"
+    value="Submit" class="btn btn-primary">
+  </form>
+</div>
+</div>
+<!-- Including head.js jQuery Script -->
+<script src="head.js"></script>
+</body>
+</html>
