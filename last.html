@@ -58,21 +58,19 @@
                 <option value="n1">NODE</option>
               </select><br><br>
               </div>
-            <div>
-                <label for="qualification">QUALIFICATION: </label><br>
-                <input type="checkbox" id="studies1" name="x" value="x" required="">
+            </div>
+            <div class="form-group browsers">
+                <label class="control-label col-md-4" for="optiontext">QUALIFICATION</label>
                 <span class="error_form" id="qua_error_message"></span>
-                <label for="x"> x</label><br>
-                <input type="checkbox" id="studies2" name="12" value="12">
-                <label for="12">12</label><br>
-                <input type="checkbox" id="studies3" name="ug" value="ug">
-                <label for="ug">UG</label><br>
-                <input type="checkbox" id="studies4" name="pg" value="pg">
-                <label for="pg"> PG</label><br>
-                <input type="checkbox" id="studies5" name="mphil" value="mphil">
-                <label for="mphil">MPHIL</label><br>
-                <input type="checkbox" id="studies6" name="doctorate" value="doctorate">
-                <label for="doctorate">DOCTORATE</label><br><br>
+                <div class="col-md-6">
+                    <input type="checkbox" name="browser" value="X" required/> X<br>
+                    <input type="checkbox" name="browser" value="12" required/> 12<br>
+                    <input type="checkbox" name="browser" value="UG" required/> UG<br>
+                    <input type="checkbox" name="browser" value="PG" required/> PG<br>
+                    <input type="checkbox" name="browser" value="mphil" required/> mphil<br>
+                    <input type="checkbox" name="browser" value="doctorate" required/> doctorate<br><br>
+
+                </div>
             </div>
             <div>
                 <label for="GENDER">GENDER:</label><br>
@@ -85,7 +83,7 @@
             </div>
             <div>
                 <label for="RESUME">RESUME:</label><br>
-                <input type="file" id="myFile" name="filename" required="">
+                <input type="file" id="form_file" name="" required=""accept=".pdf,.doc">
                 <span class="error_form" id="res_error_message"></span>
                 <br><br>
             </div>
@@ -138,12 +136,12 @@
             $("#studies1").focusout(function() {
             check_studies1();
          });
-         $("#form_").focusout(function(){
+         $("#form_file").focusout(function(){
             check_myfile();
          });
 
          function check_fname() {
-            var pattern = /^[a-zA-Z]*$/;
+            var pattern = /^[a-zA-Z_ ]*$/;
             var fname = $("#form_fname").val();
             if (pattern.test(fname) && fname !== '') {
                $("#fname_error_message").hide();
@@ -169,6 +167,29 @@
                error_email = true;
             }
          }
+         function check_res() {
+            var pattern = /(\.pdf|\.docs|\.docs|)$/;
+            var file = $("#form_file").val();
+            if (pattern.test(file) && file !== '') {
+               $("#res_error_message").hide();
+               $("#form_file").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#res_error_message").html("Invalid file");
+               $("#res_error_message").show();
+               $("#form_file").css("border-bottom","2px solid #F90A0A");
+               error_res = true;
+            }
+         }
+         $(function(){
+    var requiredCheckboxes = $('.browsers :checkbox[required]');
+    requiredCheckboxes.change(function(){
+        if(requiredCheckboxes.is(':checked')) {
+            requiredCheckboxes.removeAttr('required');
+        } else {
+            requiredCheckboxes.attr('required', 'required');
+        }
+    });
+});
 
          $("#registration_form").submit(function() {
             error_fname = false;
