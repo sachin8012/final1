@@ -1,0 +1,207 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Hover Placeholder With Validation</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h1>REGISTER</h1>
+		<form id="registration_form">
+			<div>
+                <label for="NAME">NAME:</label>
+				<input type="text" id="form_fname" name="" required="">
+				<span class="error_form" id="fname_error_message"></span><br><br>	
+			</div>
+            <div>
+                <label for="birthday">BIRTHDAY:</label>
+                <input type="date" id="birthday" name="birthday" required="">
+                <span class="error_form" id="bday_error_message"></span>
+                <br><br>
+                </div>
+
+			<div>
+                <label for="email">EMAIL ID:</label>
+				<input type="email" id="form_email" name="" required="">
+				<span class="error_form" id="email_error_message"></span><br><br>
+			</div>
+            <div>
+                <label for="phone">MOBILE NUMBER:</label>
+                <span class="error_form" id="phone_error_message"></span>
+                <input type="tel" id="phone" name="phone" required=""><br><br>
+            </div>
+            <div>
+                <label for="experience">TOTAL NO OF EXPERIENCE:</label>
+                <span class="error_form" id="exp_error_message"></span>
+                <select name="experience" id="experience" required="">
+                  <option value="FRESHER">fresher</option>
+                  <option value="1-2 YEARS">1-2 YEARS</option>
+                  <option value="2-5 YEARS">2-5 YEARS</option>
+                  <option value="5-8 YERAS">5-8 YEARS</option>
+                  <option value=">8 YEARS">>8 YEARS</option>
+                </select><br><br>
+            </div>
+            <div>
+              <label for="skill set">SKILL SET:</label><br>
+              <select class="js-example-basic-multiple" id="multipleCheck" name="states[]" multiple="multiple" class="form-group" required="">
+                <span class="error_form" id="set_error_message"></span>
+                <option value="chtml">HTML</option>
+                <option value="jquery">JQUERY</option>
+                <option value="java">JAVA</option>
+                <option value="hcss">CSS</option>
+                <option value="bstrap">BOOTSTRAP</option>
+                <option value="pthon">PYTHON</option>
+                <option value="n1">NODE</option>
+              </select><br><br>
+              </div>
+            <div>
+                <label for="qualification">QUALIFICATION: </label><br>
+                <input type="checkbox" id="studies1" name="x" value="x" required="">
+                <span class="error_form" id="qua_error_message"></span>
+                <label for="x"> x</label><br>
+                <input type="checkbox" id="studies2" name="12" value="12">
+                <label for="12">12</label><br>
+                <input type="checkbox" id="studies3" name="ug" value="ug">
+                <label for="ug">UG</label><br>
+                <input type="checkbox" id="studies4" name="pg" value="pg">
+                <label for="pg"> PG</label><br>
+                <input type="checkbox" id="studies5" name="mphil" value="mphil">
+                <label for="mphil">MPHIL</label><br>
+                <input type="checkbox" id="studies6" name="doctorate" value="doctorate">
+                <label for="doctorate">DOCTORATE</label><br><br>
+            </div>
+            <div>
+                <label for="GENDER">GENDER:</label><br>
+                <input type="radio" id="gender1" name="gender" , value="male">
+                <label for="gender1">male</label><br>
+                <input type="radio" id="gender2" name="gender" value="female"required="">
+                <label for="gender2">female</label>
+                <span class="error_form" id="gender_error_message"></span>
+                <br><br>
+            </div>
+            <div>
+                <label for="RESUME">RESUME:</label><br>
+                <input type="file" id="myFile" name="filename" required="">
+                <span class="error_form" id="res_error_message"></span>
+                <br><br>
+            </div>
+            
+			<input type="submit" value="Register" name="">
+		</form>
+      
+	</div>
+	<script type="text/javascript">
+      $(function() {
+
+         $("#fname_error_message").hide();
+         $("#bday_error_message").hide();
+         $("#email_error_message").hide();
+         $("#phone_error_message").hide();
+         $("#exp_error_message").hide();
+         $("#set_error_message").hide();
+         $("#qua_error_message").hide();
+         $("#gender_error_message").hide();
+         $("#res_error_message").hide();
+
+         var error_fname = false;
+         var error_bday = false;
+         var error_email = false;
+         var error_phone = false;
+         var error_exp = false;
+         var error_set = false;
+         var error_qua = false;
+         var error_gender = false;
+         var error_res = false;
+
+         $("#form_fname").focusout(function(){
+            check_fname();
+         });
+         $("#birthday").focusout(function() {
+            check_birthday();
+         });
+         $("#form_email").focusout(function() {
+            check_email();
+         });
+         $("#experience").focusout(function() {
+            check_phone();
+         });
+         $("#multicheck").focusout(function() {
+            check_multicheck();
+         });   
+            $("#gender1").focusout(function() {
+            check_gender1();
+            });   
+            $("#studies1").focusout(function() {
+            check_studies1();
+         });
+         $("#form_").focusout(function(){
+            check_myfile();
+         });
+
+         function check_fname() {
+            var pattern = /^[a-zA-Z]*$/;
+            var fname = $("#form_fname").val();
+            if (pattern.test(fname) && fname !== '') {
+               $("#fname_error_message").hide();
+               $("#form_fname").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#fname_error_message").html("Should contain only Characters");
+               $("#fname_error_message").show();
+               $("#form_fname").css("border-bottom","2px solid #F90A0A");
+               error_fname = true;
+            }
+         }
+
+         function check_email() {
+            var pattern = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var email = $("#form_email").val();
+            if (pattern.test(email) && email !== '') {
+               $("#email_error_message").hide();
+               $("#form_email").css("border-bottom","2px solid #34F458");
+            } else {
+               $("#email_error_message").html("Invalid Email");
+               $("#email_error_message").show();
+               $("#form_email").css("border-bottom","2px solid #F90A0A");
+               error_email = true;
+            }
+         }
+
+         $("#registration_form").submit(function() {
+            error_fname = false;
+            error_bday = false;
+            error_email = false;
+            error_phone = false;
+            error_exp = false;
+            error_set=false;
+            error_qua=false;
+            error_gender = false;
+            error_res = false;
+
+            check_fname();
+            check_bday();
+            check_email();
+            check_phone();
+            check_exp();
+            check_set();
+            check_qua();
+            check_gender();
+            check_res();
+
+            if (error_fname === false && error_bday === false && error_email === false && error_phone === false && error_exp === false && error_set === false && error_qua=== false && error_gender=== false && error_res=== false) {
+               alert("Registration Successfull");
+               return true;
+            } else {
+               alert("Please Fill the form Correctly");
+               return false;
+            }
+
+
+         });
+      });
+   </script>
+</body>
+</html>
